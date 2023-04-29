@@ -37,7 +37,7 @@ $taskStatus = 'backlog';
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link">Дошка</a>
+                <a href="index.php" class="nav-link">Дошка!</a>
             </li>
             <li class="nav-item bg-primary d-none d-sm-inline-block">
                 <a href="index.php" class="nav-link">Створити задачу</a>
@@ -61,7 +61,7 @@ $taskStatus = 'backlog';
         <a href="index.php" class="brand-link">
             <img src="static/img/logo.png" alt="Логотип Завдання та проекти" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">Завдання та проекти</span>
+            <span class="brand-text font-weight-light">Завдання та проекти!</span>
         </a>
 
         <!-- Sidebar -->
