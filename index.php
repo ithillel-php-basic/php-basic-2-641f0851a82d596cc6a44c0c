@@ -115,7 +115,7 @@ $taskStatus = 'backlog';
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Назва проекту</li>
+                            <li class="breadcrumb-item active">Назва проекту?</li>
                         </ol>
                     </div>
                 </div>
