@@ -2,6 +2,22 @@
 
 $taskStatus = 'backlog';
 
+var_dump ($taskStatus)
+
+switch ($var) {
+    case 1:
+        echo'on';
+        break;
+
+        case 2:
+            echo 'off';
+            break;
+
+            case 3:
+                echo 'default';
+                break;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,9 +158,9 @@ $taskStatus = 'backlog';
                             Беклог
                         </h3>
                     </div>
+                    <?php if(): ?>
                     <div class="card-body connectedSortable" data-status="backlog">
                         <div class="card card-info card-outline" data-task-id="1">
-                            <?php if(true): ?>
                             <div class="card-header">
                                 <h5 class="card-title">Зробити головну</h5>
                                 <div class="card-tools">
