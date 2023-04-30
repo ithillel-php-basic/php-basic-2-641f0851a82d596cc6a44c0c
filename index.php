@@ -1,6 +1,5 @@
 <?php
-
-$taskStatus = 'backlog';
+    $taskStatus = 'backlog';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +59,7 @@ $taskStatus = 'backlog';
         <a href="index.php" class="brand-link">
             <img src="static/img/logo.png" alt="Логотип Завдання та проекти" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">Завдання та проекти!</span>
+            <span class="brand-text font-weight-light">Завдання та проекти</span>
         </a>
 
         <!-- Sidebar -->
@@ -71,7 +70,7 @@ $taskStatus = 'backlog';
                     <img src="static/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Володимир.</a>
+                    <a href="#" class="d-block">Володимир</a>
                 </div>
             </div>
 
@@ -114,7 +113,7 @@ $taskStatus = 'backlog';
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Назва проекту?</li>
+                            <li class="breadcrumb-item active">Назва проекту</li>
                         </ol>
                     </div>
                 </div>
@@ -142,28 +141,28 @@ $taskStatus = 'backlog';
                         </h3>
                     </div>
                     <div class="card-body connectedSortable" data-status="backlog">
-                        <?php if($taskStatus === 'blcklog'): ?>
-                        <div class="card card-info card-outline" data-task-id="1">
-                            <div class="card-header">
-                                <h5 class="card-title">Зробити головну</h5>
-                                <div class="card-tools">
-                                    <a href="#" class="btn btn-tool btn-link">#3</a>
+                        <?php if ($taskStatus === 'backlog'): ?>
+                            <div class="card card-info card-outline" data-task-id="1">
+                                <div class="card-header">
+                                    <h5 class="card-title">Зробити головну</h5>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-link">#3</a>
+                                        <a href="#" class="btn btn-tool">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        Зробити головну сторінку списку задач з можливістю перегляду,
+                                        створення, редагування, видалення задач.
+                                    </p>
                                     <a href="#" class="btn btn-tool">
-                                        <i class="fas fa-pen"></i>
+                                        <i class="fas fa-file"></i>
                                     </a>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <p>
-                                    Зробити головну сторінку списку задач з можливістю перегляду,
-                                    створення, редагування, видалення задач.
-                                </p>
-                                <a href="#" class="btn btn-tool">
-                                    <i class="fas fa-file"></i>
-                                </a>
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                            </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -175,7 +174,6 @@ $taskStatus = 'backlog';
                     </div>
                     <div class="card-body connectedSortable" data-status="to-do">
                         <?php if($taskStatus === 'to-do'): ?>
-
 
                         <?php endif; ?>
                     </div>
@@ -189,7 +187,6 @@ $taskStatus = 'backlog';
                     <div class="card-body connectedSortable" data-status="in-progress">
                         <?php if($taskStatus === 'in-progress'): ?>
 
-
                         <?php endif; ?>
                     </div>
                 </div>
@@ -201,7 +198,6 @@ $taskStatus = 'backlog';
                     </div>
                     <div class="card-body connectedSortable" data-status="done">
                         <?php if($taskStatus === 'done'): ?>
-
 
                         <?php endif; ?>
                     </div>
