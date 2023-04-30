@@ -1,23 +1,6 @@
 <?php
 
 $taskStatus = 'backlog';
-
-var_dump ($taskStatus)
-
-switch ($var) {
-    case 1:
-        echo'on';
-        break;
-
-        case 2:
-            echo 'off';
-            break;
-
-            case 3:
-                echo 'default';
-                break;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,8 +141,8 @@ switch ($var) {
                             Беклог
                         </h3>
                     </div>
-                    <?php if(): ?>
                     <div class="card-body connectedSortable" data-status="backlog">
+                        <?php if($taskStatus === 'blcklog'): ?>
                         <div class="card card-info card-outline" data-task-id="1">
                             <div class="card-header">
                                 <h5 class="card-title">Зробити головну</h5>
@@ -191,6 +174,10 @@ switch ($var) {
                         </h3>
                     </div>
                     <div class="card-body connectedSortable" data-status="to-do">
+                        <?php if($taskStatus === 'to-do'): ?>
+
+
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="card card-row card-default">
@@ -200,6 +187,10 @@ switch ($var) {
                         </h3>
                     </div>
                     <div class="card-body connectedSortable" data-status="in-progress">
+                        <?php if($taskStatus === 'in-progress'): ?>
+
+
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="card card-row card-success">
@@ -209,6 +200,10 @@ switch ($var) {
                         </h3>
                     </div>
                     <div class="card-body connectedSortable" data-status="done">
+                        <?php if($taskStatus === 'done'): ?>
+
+
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
