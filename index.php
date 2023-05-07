@@ -1,6 +1,6 @@
 <?php
 
-$taskStatus = 'backlog';
+$task = 'backlog';
 $task = 'backlog';
 $category = ['Вхідні', 'Навчання', 'Робота', 'Домашні справи', 'Авто'];
 $info = [
