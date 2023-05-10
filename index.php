@@ -1,56 +1,54 @@
 <?php
 
-$task = 'backlog';
-$task = 'backlog';
-$category = ['Вхідні', 'Навчання', 'Робота', 'Домашні справи', 'Авто'];
-$info = [
+$categories = ["Домашні справи", "Авто", "Робота", "Вхідні", "Навчання"];
+
+$tasks = [
     [
-        'task' => 'Співбесіда в IT компанію',
+        'title' => 'Співбесіда в IT компанію',
         'date' => '01/.07/.2023',
         'category' => 'Робота',
         'status' => 'backlog',
     ], [
-        'task' => 'Виконати тестове завдання',
+        'title' => 'Виконати тестове завдання',
         'date' => '25/.07/.2023',
         'category' => 'Робота',
         'status' => 'backlog',
     ], [
-        'task' => 'Зробити завдання до першого уроку',
+        'title' => 'Зробити завдання до першого уроку',
         'date' => '27/.04/.2023',
         'category' => 'Навчання',
         'status' => 'done',
     ], [
-        'task' => 'Зустрітись з друзями',
+        'title' => 'Зустрітись з друзями',
         'date' => '14/.05/.2023',
         'category' => 'Вхідні',
         'status' => 'to-do',
     ], [
-        'task' => 'Купити корм для кота',
+        'title' => 'Купити корм для кота',
         'date' => 'null',
         'category' => 'Домашні справи',
         'status' => 'in-progress',
     ],
     [
-        'task' => 'Замовити піцу',
+        'title' => 'Замовити піцу',
         'date' => 'null',
         'category' => 'Домашні справи',
         'status' => 'to-do',
     ],
 ];
 
-function tasksum($array,$projectname ) {
-    $number = 0;
-    foreach($array as $el) {
-        if($el['category'] === $projectname ) {
-            $number += 1;
+function countHome ($array,$category){
+    $i = 0;
+    foreach ($array as $ar){
+        if($ar['category'] === $category){
+            $i = $i + 1;
         }
     }
-
-    echo $number;
+    return $i;
 }
 
 ?>
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,15 +127,21 @@ function tasksum($array,$projectname ) {
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="index.php" class="nav-link active">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Назва проекту
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
+                    <?php foreach ($categories as $key=>$name): ?>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    <?= $name ?>
+
+
+                                    <span class="badge badge-info right"><?php echo countHome($tasks,$name); ?></span>
+                                </p>
+                            </a>
+                        </li>
+                    <?php endforeach;?>
+
+
                     <li class="nav-item">
                         <a href="index.php" class="nav-link bg-olive">
                             <i class="nav-icon fas fa-plus"></i>
@@ -191,31 +195,42 @@ function tasksum($array,$projectname ) {
                         </h3>
                     </div>
                     <div class="card-body connectedSortable" data-status="backlog">
-                        <?php foreach ($info as $item): ?>
-                            <?php if($item['status'] === 'backlog'):?>
-                                <div class="card card-info card-outline" data-task-id="1">
-                                    <div class="card-header">
-                                        <h5 class="card-title"><?=$item['category']?></h5>
-                                        <div class="card-tools">
-                                            <a href="#" class="btn btn-tool btn-link">#3</a>
-                                            <a href="#" class="btn btn-tool">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p>
-                                            <?=$item['task']?>
-                                        </p>
+
+                        <?php foreach ($tasks as $task): ?>
+                            <?php if ($task['status'] !== 'backlog'){
+                                continue;
+                            } ?>
+                            <div class="card card-info card-outline" data-task-id="1">
+                                <div class="card-header">
+                                    <h5 class="card-title"><?= $task['title']; ?></h5>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-link">#3</a>
                                         <a href="#" class="btn btn-tool">
-                                            <i class="fas fa-file"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i><?=$item['date']?></small>
                                     </div>
                                 </div>
-                            <?php endif?>
-                        <?php endforeach;?>
+
+
+                                <div class="card-body">
+                                    <p>
+
+
+                                    </p>
+                                    <a href="#" class="btn btn-tool">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                </div>
+                            </div>
+
+
+                        <?php endforeach ?>
+
+
                     </div>
+
+
                 </div>
                 <div class="card card-row card-primary">
                     <div class="card-header">
@@ -223,65 +238,87 @@ function tasksum($array,$projectname ) {
                             Зробити
                         </h3>
                     </div>
-                    <div class="card-body connectedSortable" data-status="to-do">
-                        <?php foreach ($info as $item): ?>
-                            <?php if($item['status'] === 'to-do'):?>
-                                <div class="card card-info card-outline" data-task-id="1">
-                                    <div class="card-header">
-                                        <h5 class="card-title"><?=$item['category']?></h5>
-                                        <div class="card-tools">
-                                            <a href="#" class="btn btn-tool btn-link">#3</a>
-                                            <a href="#" class="btn btn-tool">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p>
-                                            <?=$item['task']?>
-                                        </p>
+                    <div class="card-body connectedSortable" data-status="backlog">
+
+                        <?php foreach ($tasks as $task): ?>
+                            <?php if ($task['status'] !== 'in-progress'){
+                                continue;
+                            } ?>
+                            <div class="card card-info card-outline" data-task-id="1">
+                                <div class="card-header">
+                                    <h5 class="card-title"><?= $task['title']; ?></h5>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-link">#3</a>
                                         <a href="#" class="btn btn-tool">
-                                            <i class="fas fa-file"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i><?=$item['date']?></small>
                                     </div>
                                 </div>
-                            <?php endif?>
-                        <?php endforeach;?>
+
+
+                                <div class="card-body">
+                                    <p>
+
+
+                                    </p>
+                                    <a href="#" class="btn btn-tool">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                </div>
+                            </div>
+
+
+                        <?php endforeach ?>
+
+
                     </div>
+
+
                 </div>
-                <div class="card card-row card-default">
-                    <div class="card-header bg-info">
+                <div class="card card-row card-info">
+                    <div class="card-header">
                         <h3 class="card-title">
                             В процесі
                         </h3>
                     </div>
-                    <div class="card-body connectedSortable" data-status="in-progress">
-                        <?php foreach ($info as $item): ?>
-                            <?php if($item['status'] === 'in-progress'):?>
-                                <div class="card card-info card-outline" data-task-id="1">
-                                    <div class="card-header">
-                                        <h5 class="card-title"><?=$item['category']?></h5>
-                                        <div class="card-tools">
-                                            <a href="#" class="btn btn-tool btn-link">#3</a>
-                                            <a href="#" class="btn btn-tool">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p>
-                                            <?=$item['task']?>
-                                        </p>
+                    <div class="card-body connectedSortable" data-status="backlog">
+
+                        <?php foreach ($tasks as $task): ?>
+                            <?php if ($task['status'] !== 'to-do'){
+                                continue;
+                            } ?>
+                            <div class="card card-info card-outline" data-task-id="1">
+                                <div class="card-header">
+                                    <h5 class="card-title"><?= $task['title']; ?></h5>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-link">#3</a>
                                         <a href="#" class="btn btn-tool">
-                                            <i class="fas fa-file"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i><?=$item['date']?></small>
                                     </div>
                                 </div>
-                            <?php endif?>
-                        <?php endforeach;?>
+
+
+                                <div class="card-body">
+                                    <p>
+
+
+                                    </p>
+                                    <a href="#" class="btn btn-tool">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                </div>
+                            </div>
+
+
+                        <?php endforeach ?>
+
+
                     </div>
+
+
                 </div>
                 <div class="card card-row card-success">
                     <div class="card-header">
@@ -289,36 +326,52 @@ function tasksum($array,$projectname ) {
                             Готово
                         </h3>
                     </div>
-                    <div class="card-body connectedSortable" data-status="done">
-                        <?php foreach ($info as $item): ?>
-                            <?php if($item['status'] === 'done'):?>
-                                <div class="card card-info card-outline" data-task-id="1">
-                                    <div class="card-header">
-                                        <h5 class="card-title"><?=$item['category']?></h5>
-                                        <div class="card-tools">
-                                            <a href="#" class="btn btn-tool btn-link">#3</a>
-                                            <a href="#" class="btn btn-tool">
-                                                <i class="fas fa-pen"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <p>
-                                            <?=$item['task']?>
-                                        </p>
+                    <div class="card-body connectedSortable" data-status="backlog">
+
+                        <?php foreach ($tasks as $task): ?>
+                            <?php if ($task['status'] !== 'done'){
+                                continue;
+                            } ?>
+                            <div class="card card-info card-outline" data-task-id="1">
+                                <div class="card-header">
+                                    <h5 class="card-title"><?= $task['title']; ?></h5>
+                                    <div class="card-tools">
+                                        <a href="#" class="btn btn-tool btn-link">#3</a>
                                         <a href="#" class="btn btn-tool">
-                                            <i class="fas fa-file"></i>
+                                            <i class="fas fa-pen"></i>
                                         </a>
-                                        <small class="badge badge-danger"><i class="far fa-clock"></i><?=$item['date']?></small>
                                     </div>
                                 </div>
-                            <?php endif?>
-                        <?php endforeach;?>
+
+
+                                <div class="card-body">
+                                    <p>
+
+
+                                    </p>
+                                    <a href="#" class="btn btn-tool">
+                                        <i class="fas fa-file"></i>
+                                    </a>
+                                    <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                </div>
+                            </div>
+
+
+                        <?php endforeach ?>
+
+
                     </div>
+
+
                 </div>
+
             </div>
         </section>
     </div>
+
+
+
+
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
